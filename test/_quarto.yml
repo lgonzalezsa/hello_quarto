@@ -1,5 +1,5 @@
 project:
-  type: website
+  type: book
   output-dir: docs
 
 website:
@@ -9,13 +9,26 @@ website:
       - href: index.qmd
         text: Home
       - testing.ipynb
+      - testing_copy.ipynb
       - about.qmd
+book:
+  title: "Testing quarto book"
+  author: "Luis R. Gonzalez"
+  date: "8/18/2022"
+  chapters:
+    - index.qmd
+    - testing.ipynb
+    - testing_copy.ipynb
+    - about.qmd
 
 format:
   html:
     theme: cosmo
     css: styles.css
     toc: true
+    toc-depth: 4
+  pdf:
+    documentclass: scrreport
 
 
 
