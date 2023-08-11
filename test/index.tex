@@ -6,7 +6,7 @@
 \documentclass[
   letterpaper,
   DIV=11,
-  numbers=noendperiod]{scrreport}
+  numbers=noendperiod]{scrartcl}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -186,11 +186,11 @@
 
 \title{Testing quarto book}
 \author{Luis R. Gonzalez}
-\date{8/18/2022}
+\date{8/18/22}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, sharp corners, frame hidden, breakable, interior hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, breakable, borderline west={3pt}{0pt}{shadecolor}, interior hidden, frame hidden, enhanced, boxrule=0pt]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -213,11 +213,6 @@ To learn more about Quarto websites visit
 \hypertarget{testing-cross-reference-with-holoviews-charts}{%
 \chapter{Testing cross-reference with holoviews
 charts}\label{testing-cross-reference-with-holoviews-charts}}
-
-Luis R. Gonzalez\\
-Aug 20, 2022
-
-\hfill\break
 
 ::: \{.cell 0=`h' 1=`i' 2=`d' 3=`e' execution\_count=1\}
 
@@ -488,19 +483,8 @@ Unable to display output for mime type(s): text/html
 
 \end{figure}
 
-\begin{figure}
-
-{\centering 
-
-\begin{verbatim}
-Unable to display output for mime type(s): 
-\end{verbatim}
-
-}
-
-\caption{\textbf{?(caption)}}
-
-\end{figure}
+\leavevmode\vadjust pre{\hypertarget{fig-plot-4}{}}%
+\textbf{?(caption)}
 
 \begin{figure}
 
@@ -539,15 +523,9 @@ Unable to display output for mime type(s):
 \chapter{Testing cross-reference with holoviews
 charts}\label{testing-cross-reference-with-holoviews-charts-1}}
 
-Luis R. Gonzalez\\
-Aug 20, 2022
-
-\hfill\break
-
-::: \{.cell 0=`h' 1=`i' 2=`d' 3=`e' execution\_count=2\}
-
 \begin{Shaded}
 \begin{Highlighting}[]
+
 \ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
 \ImportTok{from}\NormalTok{ sklearn.datasets }\ImportTok{import}\NormalTok{ load\_iris}
 \ImportTok{from}\NormalTok{ pandas }\ImportTok{import}\NormalTok{ util}
@@ -555,32 +533,23 @@ Aug 20, 2022
 \end{Highlighting}
 \end{Shaded}
 
-:::
-
-::: \{.cell 0=`h' 1=`i' 2=`d' 3=`e' execution\_count=3\}
-
 \begin{Shaded}
 \begin{Highlighting}[]
+
 \NormalTok{pd.options.plotting.backend }\OperatorTok{=} \StringTok{"holoviews"}
 \end{Highlighting}
 \end{Shaded}
 
-:::
-
-::: \{.cell 0=`h' 1=`i' 2=`d' 3=`e' execution\_count=4\}
-
 \begin{Shaded}
 \begin{Highlighting}[]
+
 \NormalTok{data }\OperatorTok{=}\NormalTok{ load\_iris()}
 \end{Highlighting}
 \end{Shaded}
 
-:::
-
-::: \{.cell 0=`h' 1=`i' 2=`d' 3=`e' execution\_count=5\}
-
 \begin{Shaded}
 \begin{Highlighting}[]
+
 \NormalTok{df }\OperatorTok{=}\NormalTok{ util.testing.makeTimeDataFrame()}
 \end{Highlighting}
 \end{Shaded}
@@ -590,12 +559,9 @@ Aug 20, 2022
   import pandas.util.testing
 \end{verbatim}
 
-:::
-
-::: \{.cell 0=`h' 1=`i' 2=`d' 3=`e' execution\_count=6\}
-
 \begin{Shaded}
 \begin{Highlighting}[]
+
 \NormalTok{df.head()}
 \end{Highlighting}
 \end{Shaded}
@@ -613,12 +579,9 @@ Aug 20, 2022
 \bottomrule()
 \end{longtable}
 
-:::
-
-::: \{.cell 0=`h' 1=`i' 2=`d' 3=`e' execution\_count=7\}
-
 \begin{Shaded}
 \begin{Highlighting}[]
+
 \NormalTok{df.reset\_index().rename(columns}\OperatorTok{=}\NormalTok{\{}\StringTok{\textquotesingle{}index\textquotesingle{}}\NormalTok{:}\StringTok{\textquotesingle{}Date\textquotesingle{}}\NormalTok{\}).groupby([pd.Grouper(key}\OperatorTok{=}\StringTok{\textquotesingle{}Date\textquotesingle{}}\NormalTok{,freq}\OperatorTok{=}\StringTok{\textquotesingle{}M\textquotesingle{}}\NormalTok{)]).}\BuiltInTok{sum}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -634,22 +597,16 @@ Date & & & & \\
 \bottomrule()
 \end{longtable}
 
-:::
-
-::: \{.cell 0=`h' 1=`i' 2=`d' 3=`e' execution\_count=8\}
-
 \begin{Shaded}
 \begin{Highlighting}[]
+
 \NormalTok{df }\OperatorTok{=}\NormalTok{ df.assign(max\_value }\OperatorTok{=}\NormalTok{ df.}\BuiltInTok{max}\NormalTok{(axis}\OperatorTok{=}\DecValTok{1}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
-:::
-
-::: \{.cell 0=`h' 1=`i' 2=`d' 3=`e' execution\_count=9\}
-
 \begin{Shaded}
 \begin{Highlighting}[]
+
 \KeywordTok{def}\NormalTok{ classify(df):}
     \ControlFlowTok{if}\NormalTok{ df[}\StringTok{\textquotesingle{}max\_value\textquotesingle{}}\NormalTok{] }\OperatorTok{\textgreater{}=} \DecValTok{1}\NormalTok{:}
         \ControlFlowTok{return} \StringTok{\textquotesingle{}High\textquotesingle{}}
@@ -660,32 +617,23 @@ Date & & & & \\
 \end{Highlighting}
 \end{Shaded}
 
-:::
-
-::: \{.cell 0=`h' 1=`i' 2=`d' 3=`e' execution\_count=10\}
-
 \begin{Shaded}
 \begin{Highlighting}[]
+
 \NormalTok{df }\OperatorTok{=}\NormalTok{ df.assign(Category }\OperatorTok{=}\NormalTok{ df.}\BuiltInTok{apply}\NormalTok{(classify,axis}\OperatorTok{=}\DecValTok{1}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
-:::
-
-::: \{.cell 0=`h' 1=`i' 2=`d' 3=`e' execution\_count=11\}
-
 \begin{Shaded}
 \begin{Highlighting}[]
+
 \NormalTok{df[}\StringTok{\textquotesingle{}Category\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ df[}\StringTok{\textquotesingle{}Category\textquotesingle{}}\NormalTok{].astype(}\StringTok{"category"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-:::
-
-::: \{.cell 0=`h' 1=`i' 2=`d' 3=`e' execution\_count=12\}
-
 \begin{Shaded}
 \begin{Highlighting}[]
+
 \NormalTok{df}
 \end{Highlighting}
 \end{Shaded}
@@ -758,98 +706,25 @@ High \\
 \bottomrule()
 \end{longtable}
 
-:::
-
 See Figure~\ref{fig-plot} and Figure~\ref{fig-plot-copy}
 
 \begin{figure}
 
-{\centering 
-
-\begin{figure}
-
-{\centering 
-
-\begin{verbatim}
-Unable to display output for mime type(s): application/javascript, application/vnd.holoviews_load.v0+json
-\end{verbatim}
+{\centering \includegraphics{./testing_copy_files/figure-pdf/c230af73-2-image.png}
 
 }
 
-\caption{Holoviews example}
+\caption{\label{fig-plot}df.plot static}
 
 \end{figure}
 
 \begin{figure}
 
-{\centering 
-
-\begin{verbatim}
-Unable to display output for mime type(s): application/javascript, application/vnd.holoviews_load.v0+json
-\end{verbatim}
+{\centering \includegraphics{./testing_copy_files/figure-pdf/c230af73-1-image-2.png}
 
 }
 
-\caption{\textbf{?(caption)}}
-
-\end{figure}
-
-\begin{figure}
-
-{\centering 
-
-\begin{verbatim}
-Unable to display output for mime type(s): text/html
-\end{verbatim}
-
-}
-
-\caption{\textbf{?(caption)}}
-
-\end{figure}
-
-\begin{figure}
-
-{\centering 
-
-\begin{verbatim}
-Unable to display output for mime type(s): 
-\end{verbatim}
-
-}
-
-\caption{\textbf{?(caption)}}
-
-\end{figure}
-
-\begin{figure}
-
-{\centering 
-
-\begin{verbatim}
-:NdOverlay   [Variable]
-   :Curve   [index]   (value)
-\end{verbatim}
-
-}
-
-\caption{\textbf{?(caption)}}
-
-\end{figure}
-
-}
-
-\caption{\label{fig-plot-copy}\textbf{?(caption)}}
-
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics{./testing_copy_files/figure-pdf/fig-pairplot-output-1.png}
-
-}
-
-\caption{\label{fig-pairplot}Seaborn pairplot example}
+\caption{\label{fig-plot-copy}pairplot status}
 
 \end{figure}
 
